@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"><style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  text-align:center;
+  padding:20px;
+}
+
+.profile-card{
+  background:#1e1e1e;
+  padding:25px;
+  border-radius:20px;
+  max-width:320px;
+  margin:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.profile-img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:3px solid #00d2ff;
+  margin-bottom:15px;
+  transition:0.3s;
+}
+
+.profile-img:hover{
+  transform:scale(1.1);
+}
+
+h1{
+  margin:10px 0;
+  color:#00d2ff;
+}
+
+p{
+  color:#ccc;
+}
+
+.btn{
+  margin:8px;
+  padding:10px 15px;
+  border:none;
+  border-radius:20px;
+  background:#00d2ff;
+  color:#000;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:#00aacc;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+}
+
+.modal-content{
+  background:#fff;
+  color:#000;
+  margin:40% auto;
+  padding:20px;
+  width:80%;
+  border-radius:10px;
+}
+
+.ai-box{
+  margin-top:20px;
+  background:#1e1e1e;
+  padding:15px;
+  border-radius:15px;
+  max-width:320px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+input{
+  width:90%;
+  padding:8px;
+  margin-top:10px;
+}
+
+</style></head><body><div class="profile-card">
+  <img id="mainImg" src="https://picsum.photos/200" class="profile-img" onclick="changeImage()">
+  <h1>My Portfolio</h1>
+  <p>Engineering Student</p><button class="btn" onclick="showModal('Education','Engineering Student')">Education</button> <button class="btn" onclick="showModal('Skills','AutoCAD, Coding')">Skills</button> <button class="btn" onclick="changeImage()">Random</button>
+
+</div><div id="modal" class="modal">
+  <div class="modal-content">
+    <h2 id="title"></h2>
+    <p id="text"></p>
+    <button class="btn" onclick="closeModal()">Close</button>
+  </div>
+</div><div class="ai-box">
+  <h3>Mini AI</h3>
+  <input id="userInput" placeholder="Ask something">
+  <button class="btn" onclick="askAI()">Ask</button>
+  <p id="response"></p>
+</div><script>
+function changeImage(){
+  document.getElementById('mainImg').src="https://picsum.photos/200?random="+Math.random();
+}
+
+function showModal(t,txt){
+  document.getElementById('title').innerText=t;
+  document.getElementById('text').innerText=txt;
+  document.getElementById('modal').style.display='block';
+}
+
+function closeModal(){
+  document.getElementById('modal').style.display='none';
+}
+
+const data={
+  exam:"Exams coming soon",
+  hobby:"Coding + Anime"
+};
+
+function askAI(){
+  let val=document.getElementById('userInput').value.toLowerCase();
+  let res=document.getElementById('response');
+
+  if(val.includes('exam')) res.innerText=data.exam;
+  else if(val.includes('hobby')) res.innerText=data.hobby;
+  else res.innerText="I don't know";
+}
+</script></body>
+</html>
